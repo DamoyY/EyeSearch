@@ -1,3 +1,8 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
     background: linear-gradient(0deg, oklch(15% 0.005 264), oklch(35% 0.005 96));
     background-color: oklch(15% 0.005 264);
