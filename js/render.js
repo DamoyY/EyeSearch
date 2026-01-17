@@ -27,6 +27,24 @@ function splitDisplayUrl(url) {
     minor: displayUrl.slice(slashIndex),
   };
 }
+function getMinorScaleValue(element, fallback = 1) {
+  if (!element || typeof getComputedStyle !== "function") return fallback;
+  const raw = getComputedStyle(element)
+    .getPropertyValue("--link-minor-scale")
+    .trim();
+  const value = Number.parseFloat(raw);
+  if (!Number.isFinite(value) || value <= 0) return fallback;
+  return value;
+}
+function adjustMinorSpan(minorSpan) {
+  if (!minorSpan) return;
+  const scale = getMinorScaleValue(minorSpan);
+  if (scale === 1) return;
+  const width = minorSpan.offsetWidth;
+  if (!width) return;
+  const shrink = width * (1 - scale);
+  minorSpan.style.marginRight = `${-shrink}px`;
+}
 function tryExtractAndFormatDate(snippetHtml) {
   let snippet = snippetHtml || "";
   const dateRegex = /^"?([A-Za-z]{3,}\s\d{1,2},\s\d{4})"?\s*/;
@@ -100,6 +118,7 @@ export function renderResults(data, { append }) {
     );
     urlSpan.title = displayUrl || item.link || "";
     urlSpan.textContent = "";
+    let minorSpan = null;
     if (!main && !minor) {
       urlSpan.textContent = item.link || "";
     } else {
@@ -108,7 +127,7 @@ export function renderResults(data, { append }) {
       mainSpan.textContent = main;
       urlSpan.appendChild(mainSpan);
       if (minor) {
-        const minorSpan = document.createElement("span");
+        minorSpan = document.createElement("span");
         minorSpan.className = "link-minor";
         minorSpan.textContent = minor;
         urlSpan.appendChild(minorSpan);
@@ -133,5 +152,8 @@ export function renderResults(data, { append }) {
     }
     resultItem.appendChild(snippetDiv);
     resultsDiv.appendChild(resultItem);
+    if (minorSpan) {
+      adjustMinorSpan(minorSpan);
+    }
   });
 }

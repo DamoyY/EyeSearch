@@ -202,11 +202,12 @@ input[type="submit"] {
 }
 
 .link-minor {
+    --link-minor-scale: 0.7;
     font-size: 1em;
     color: oklch(78% 0.05 100);
     display: inline-block;
     margin-left: 0.2vw;
-    transform: scale(0.7);
+    transform: scale(var(--link-minor-scale));
     transform-origin: left center;
 }
 
