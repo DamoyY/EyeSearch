@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title translate="no">Eye</title>
+  <link rel="icon" type="image/png" href="see.png" />
+  <link rel="search" type="application/opensearchdescription+xml" href="opensearch.xml"
+    title="Eye" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="searching">
+  <form onsubmit="search(); return false;">
+    <div id="query" contenteditable="true" spellcheck="false" translate="no"
+      onkeydown="if(event.key==='Enter'){event.preventDefault();search();}"></div>
+    <input type="submit" value="Go" translate="no" />
+  </form>
+  <div id="results"></div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
