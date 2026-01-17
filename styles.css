@@ -76,7 +76,7 @@ form {
 
 input[type="submit"] {
     background-color: oklch(100% 0 0);
-    color: rgb(0, 0, 0);
+    color: oklch(0% 0 0);
     border: none;
     width: 5vh;
     flex-shrink: 0;
@@ -104,7 +104,7 @@ input[type="submit"] {
     margin-bottom: 4vh;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0vmin 1vmin 1vmin rgb(0, 0, 0);
+    text-shadow: 0vmin 1vmin 1vmin oklch(0% 0 0);
 }
 
 .result-title {
@@ -131,7 +131,7 @@ input[type="submit"] {
 
 .result-title:hover {
     color: oklch(100% 0 0);
-    text-shadow: 0vmin 0vmin 0.5vmin rgb(255, 255, 255);
+    text-shadow: 0vmin 0vmin 0.5vmin oklch(100% 0.0 0.0);
 }
 
 .result-title>span:last-child {
@@ -183,18 +183,31 @@ input[type="submit"] {
 
 .result-snippet {
     margin: 0.5vh 0;
-    color: oklch(78% 0.00009 271.152);
+    color: oklch(78% 0.0 0);
     font-size: 0.9rem;
     letter-spacing: 0.08vh;
 }
 
 .link {
-    color: oklch(78% 0.08 100);
     font-size: 1.2rem;
     font-family: monospace;
     word-break: break-all;
     display: inline-block;
     margin-top: 0.6rem;
+}
+
+.link-main {
+    font-size: 1em;
+    color: oklch(78% 0.08 100);
+}
+
+.link-minor {
+    font-size: 1em;
+    color: oklch(78% 0.05 100);
+    display: inline-block;
+    margin-left: 0.2vw;
+    transform: scale(0.7);
+    transform-origin: left center;
 }
 
 .result-item b {

@@ -9,6 +9,24 @@ function getFaviconUrl(link) {
     return "";
   }
 }
+function stripScheme(url) {
+  return String(url || "")
+    .replace(/^https?:\/\//i, "")
+    .replace(/\/+$/g, "");
+}
+function splitDisplayUrl(url) {
+  const displayUrl = stripScheme(url);
+  if (!displayUrl) return { displayUrl: "", main: "", minor: "" };
+  const slashIndex = displayUrl.indexOf("/");
+  if (slashIndex <= 0) {
+    return { displayUrl, main: displayUrl, minor: "" };
+  }
+  return {
+    displayUrl,
+    main: displayUrl.slice(0, slashIndex),
+    minor: displayUrl.slice(slashIndex),
+  };
+}
 function tryExtractAndFormatDate(snippetHtml) {
   let snippet = snippetHtml || "";
   const dateRegex = /^"?([A-Za-z]{3,}\s\d{1,2},\s\d{4})"?\s*/;
@@ -77,8 +95,25 @@ export function renderResults(data, { append }) {
     titleLink.appendChild(titleText);
     const urlSpan = document.createElement("span");
     urlSpan.className = "link";
-    urlSpan.textContent = item.formattedUrl || item.link;
-    urlSpan.title = item.link;
+    const { displayUrl, main, minor } = splitDisplayUrl(
+      item.formattedUrl || item.link,
+    );
+    urlSpan.title = displayUrl || item.link || "";
+    urlSpan.textContent = "";
+    if (!main && !minor) {
+      urlSpan.textContent = item.link || "";
+    } else {
+      const mainSpan = document.createElement("span");
+      mainSpan.className = "link-main";
+      mainSpan.textContent = main;
+      urlSpan.appendChild(mainSpan);
+      if (minor) {
+        const minorSpan = document.createElement("span");
+        minorSpan.className = "link-minor";
+        minorSpan.textContent = minor;
+        urlSpan.appendChild(minorSpan);
+      }
+    }
     urlSpan.translate = false;
     const snippetDiv = document.createElement("div");
     snippetDiv.className = "result-snippet";
