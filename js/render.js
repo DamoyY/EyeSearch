@@ -1,5 +1,14 @@
 // 渲染搜索结果
 import { el } from "./dom.js";
+function getFaviconUrl(link) {
+  try {
+    const url = new URL(link);
+    if (!url.hostname) return "";
+    return `https://www.google.com/s2/favicons?sz=64&domain=${url.hostname}`;
+  } catch {
+    return "";
+  }
+}
 function tryExtractAndFormatDate(snippetHtml) {
   let snippet = snippetHtml || "";
   const dateRegex = /^"?([A-Za-z]{3,}\s\d{1,2},\s\d{4})"?\s*/;
@@ -43,9 +52,29 @@ export function renderResults(data, { append }) {
     const titleLink = document.createElement("a");
     titleLink.className = "result-title";
     titleLink.href = item.link;
-    titleLink.textContent = item.title;
     titleLink.target = "_blank";
     titleLink.rel = "noopener noreferrer";
+    const iconUrl = getFaviconUrl(item.link);
+    if (iconUrl) {
+      const iconWrap = document.createElement("span");
+      iconWrap.className = "result-icon";
+      const iconImg = document.createElement("img");
+      iconImg.className = "result-icon-img";
+      iconImg.src = iconUrl;
+      iconImg.alt = "";
+      iconImg.loading = "lazy";
+      iconImg.decoding = "async";
+      iconImg.referrerPolicy = "no-referrer";
+      iconImg.addEventListener("load", () =>
+        iconWrap.classList.add("is-loaded"),
+      );
+      iconImg.onerror = () => iconWrap.remove();
+      iconWrap.appendChild(iconImg);
+      titleLink.appendChild(iconWrap);
+    }
+    const titleText = document.createElement("span");
+    titleText.textContent = item.title;
+    titleLink.appendChild(titleText);
     const urlSpan = document.createElement("span");
     urlSpan.className = "link";
     urlSpan.textContent = item.formattedUrl || item.link;

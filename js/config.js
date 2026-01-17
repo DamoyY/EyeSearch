@@ -3,6 +3,8 @@ export const SEARCHING_CLASS = "searching";
 export const ANIMATION_MS = 500;
 export const GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY";
 export const GOOGLE_CX = "YOUR_GOOGLE_CX";
+export const CACHE_TTL_MS = 1000 * 60 * 60 * 24;
+export const CACHE_MAX_ENTRIES = 50;
 export const exampleData = {
   items: Array(15).fill({
     title: "示例标题 / Example Title",
