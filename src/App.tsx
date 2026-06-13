@@ -98,7 +98,7 @@ const apiKeyClass = css({
   zIndex: "sticky",
   w: "auto",
   borderColor: "gray.7",
-  bg: "gray.a2",
+  bg: "gray.dark.3",
   color: "white",
   textAlign: "center",
 });
@@ -116,7 +116,7 @@ const searchFormClass = css({
 const queryClass = css({
   w: "full",
   borderColor: "gray.7",
-  bg: "gray.a2",
+  bg: "gray.dark.3",
   color: "white",
   textAlign: "center",
 });
