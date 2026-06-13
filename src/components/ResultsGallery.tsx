@@ -44,11 +44,23 @@ const listClass = css({
   listStyle: "none",
   m: "0",
   p: "0",
+  "@media (min-aspect-ratio: 1 / 2)": {
+    columnCount: 2,
+    columnGap: "4",
+    columnRuleColor: "gray.7",
+    columnRuleStyle: "solid",
+    columnRuleWidth: "1px",
+    display: "block",
+  },
 });
 
 const itemClass = css({
+  breakInside: "avoid",
   m: "0",
   p: "0",
+  "@media (min-aspect-ratio: 1 / 2)": {
+    mb: "3",
+  },
   "& + &": {
     borderTopWidth: "1px",
     borderColor: "gray.7",
