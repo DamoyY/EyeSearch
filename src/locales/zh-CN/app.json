@@ -22,8 +22,8 @@
     "queryLabel": "搜索词",
     "queryPlaceholder": "搜索",
     "queryHelper": "按 Enter 或点击按钮启动搜索。",
-    "submit": "开始观测",
-    "submitLoading": "观测中",
+    "submit": "开始搜索",
+    "submitLoading": "搜索中",
     "privacy": "本地保存密钥；请求直接发送到 Exa。"
   },
   "status": {
@@ -31,13 +31,13 @@
     "apiKeyMissing": "请先填写 Exa API Key。",
     "queryMissing": "请先填写搜索词。",
     "persistFailed": "API Key 写入浏览器存储失败，详情已输出到控制台。",
-    "searching": "正在观测“{{query}}”。",
-    "searchComplete": "观测完成，共得到 {{count}} 条结果。",
-    "searchFailed": "观测失败：{{message}}",
+    "searching": "正在搜索“{{query}}”。",
+    "searchComplete": "搜索完成，共得到 {{count}} 条结果。",
+    "searchFailed": "搜索失败：{{message}}",
     "title": {
       "idle": "待命",
-      "loading": "观测进行中",
-      "success": "观测完成",
+      "loading": "搜索进行中",
+      "success": "搜索完成",
       "error": "需要处理"
     },
     "phase": {
@@ -57,10 +57,10 @@
   },
   "results": {
     "regionLabel": "搜索结果",
-    "heading": "观测结果",
+    "heading": "搜索结果",
     "count": "{{count}} 条",
     "emptyTitle": "还没有搜索结果",
-    "emptyDescription": "完成一次观测后，高亮摘要会按去重后的来源排列在这里。",
+    "emptyDescription": "完成一次搜索后，高亮摘要会按去重后的来源排列在这里。",
     "missingHighlights": "Exa 未返回 highlights，已在控制台输出警告。"
   },
   "logs": {
