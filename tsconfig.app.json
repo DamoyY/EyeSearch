@@ -21,7 +21,8 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "verbatimModuleSyntax": true,
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "types": ["vite/client"]
   },
-  "include": ["src"]
+  "include": ["src", "styled-system"]
 }

@@ -1,0 +1,98 @@
+{
+  "document": {
+    "title": "Eye 网络搜索",
+    "description": "使用 Exa 进行带摘要的网络搜索。"
+  },
+  "errors": {
+    "rootMissing": "未找到应用根节点 #root。",
+    "metaDescriptionMissing": "未找到页面描述 meta 标签。",
+    "invalidResultLimit": "搜索结果数量配置无效：{{limit}}。",
+    "exaInvalidJson": "Exa 返回了无法解析的 JSON：{{status}} {{statusText}}。",
+    "exaUnexpectedShape": "Exa 响应结构与预期不符，请查看浏览器控制台。",
+    "exaHttp": "Exa 请求失败（{{status}} {{statusText}}）。",
+    "exaHttpWithMessage": "Exa 请求失败（{{status}} {{statusText}}）：{{message}}。"
+  },
+  "form": {
+    "kicker": "Exa",
+    "title": "Eye",
+    "description": "输入 Exa API Key 与搜索词。",
+    "apiKeyLabel": "API Key",
+    "apiKeyPlaceholder": "API Key",
+    "apiKeyHelper": "密钥只保存在当前浏览器的 localStorage。",
+    "queryLabel": "搜索词",
+    "queryPlaceholder": "搜索",
+    "queryHelper": "按 Enter 或点击按钮启动搜索。",
+    "submit": "开始观测",
+    "submitLoading": "观测中",
+    "privacy": "本地保存密钥；请求直接发送到 Exa。"
+  },
+  "status": {
+    "ready": "等待输入 API Key 与搜索词。",
+    "apiKeyMissing": "请先填写 Exa API Key。",
+    "queryMissing": "请先填写搜索词。",
+    "persistFailed": "API Key 写入浏览器存储失败，详情已输出到控制台。",
+    "searching": "正在观测“{{query}}”。",
+    "searchComplete": "观测完成，共得到 {{count}} 条结果。",
+    "searchFailed": "观测失败：{{message}}",
+    "title": {
+      "idle": "待命",
+      "loading": "观测进行中",
+      "success": "观测完成",
+      "error": "需要处理"
+    },
+    "phase": {
+      "idle": "待命",
+      "loading": "搜索",
+      "success": "完成",
+      "error": "错误"
+    }
+  },
+  "telemetry": {
+    "phase": "阶段",
+    "results": "结果",
+    "request": "请求",
+    "requestId": "请求 ID",
+    "searchType": "搜索类型",
+    "notAvailable": "暂无"
+  },
+  "results": {
+    "regionLabel": "搜索结果",
+    "heading": "观测结果",
+    "count": "{{count}} 条",
+    "emptyTitle": "还没有搜索结果",
+    "emptyDescription": "完成一次观测后，高亮摘要会按去重后的来源排列在这里。",
+    "missingHighlights": "Exa 未返回 highlights，已在控制台输出警告。"
+  },
+  "logs": {
+    "metaDescriptionMissing": "缺少页面描述 meta 标签",
+    "appMounted": "应用已挂载",
+    "windowError": "捕获 window.error：{{message}}",
+    "unhandledRejection": "捕获 unhandledrejection",
+    "globalListenersInstalled": "全局错误监听器已安装",
+    "globalListenersRemoved": "全局错误监听器已卸载",
+    "searchSubmit": "#{{requestNumber}} 搜索提交",
+    "inputValidation": "输入校验 #{{requestNumber}}",
+    "validationMissingApiKey": "第 {{requestNumber}} 次提交缺少 API Key",
+    "validationMissingQuery": "第 {{requestNumber}} 次提交缺少搜索词",
+    "searchComplete": "第 {{requestNumber}} 次搜索完成",
+    "searchFailed": "第 {{requestNumber}} 次搜索失败",
+    "storageRead": "读取 API Key",
+    "storageReadFailed": "读取 API Key 失败",
+    "storagePersisted": "API Key 已写入存储",
+    "storagePersistFailed": "写入 API Key 失败",
+    "resultDuplicateDiscarded": "第 {{requestNumber}} 次搜索的第 {{duplicateIndex}} 条结果与第 {{keptIndex}} 条重复，已丢弃",
+    "resultsDeduped": "第 {{requestNumber}} 次搜索已去重",
+    "exaSearchStarted": "#{{requestNumber}} Exa 搜索开始",
+    "exaRequestOverview": "Exa 请求概览 #{{requestNumber}}",
+    "exaRequestPayload": "Exa 请求体 #{{requestNumber}}",
+    "exaResponseReceived": "收到 Exa 响应 #{{requestNumber}}",
+    "exaRawBodyLength": "Exa 原始响应长度 #{{requestNumber}}",
+    "exaJsonParseFailed": "Exa JSON 解析失败 #{{requestNumber}}",
+    "exaNonSuccessBody": "Exa 非 2xx 响应体 #{{requestNumber}}",
+    "exaShapeMismatch": "Exa 响应结构校验失败 #{{requestNumber}}",
+    "exaMissingHighlights": "第 {{requestNumber}} 次搜索的第 {{index}} 条结果没有可用 highlights",
+    "exaMultipleHighlights": "第 {{requestNumber}} 次搜索的第 {{index}} 条结果返回多个 highlights",
+    "exaSearchFinished": "Exa 搜索完成 #{{requestNumber}}",
+    "exaSearchFailed": "Exa 搜索失败 #{{requestNumber}}"
+  }
+}

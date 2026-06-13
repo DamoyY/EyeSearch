@@ -4,21 +4,41 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "codegen": "panda codegen",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "prepare": "panda codegen",
+    "build": "bun run codegen && tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --pretty false"
+    "test": "bun run codegen && node node_modules/vitest/vitest.mjs run --pool=vmThreads",
+    "typecheck": "bun run codegen && tsc -b --pretty false"
   },
   "dependencies": {
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "zod": "^4.4.3"
+    "@ark-ui/react": "latest",
+    "i18next": "latest",
+    "i18next-browser-languagedetector": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-i18next": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.2",
-    "typescript": "^6.0.3",
-    "vite": "^8.0.13"
+    "@babel/core": "latest",
+    "@pandacss/dev": "latest",
+    "@park-ui/panda-preset": "latest",
+    "@rolldown/plugin-babel": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@types/babel__core": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "babel-plugin-react-compiler": "latest",
+    "jsdom": "latest",
+    "postcss": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest"
   }
 }

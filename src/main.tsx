@@ -1,11 +1,31 @@
-import { createRoot } from 'react-dom/client';
-import App from './App';
-import './styles.css';
+import { StrictMode, type ReactElement } from "react";
+import { createRoot } from "react-dom/client";
 
-const rootElement = document.getElementById('root');
+import App from "./App";
+import { translate } from "./i18n/translate";
+import "./i18n/initialize";
+import "./panda.css";
 
-if (rootElement === null) {
-  throw new Error('未找到应用根节点 #root');
+function readRootElement(): HTMLElement {
+  const rootElement = document.getElementById("root");
+
+  if (rootElement === null) {
+    throw new Error(translate("errors.rootMissing"));
+  }
+
+  return rootElement;
 }
 
-createRoot(rootElement).render(<App />);
+function renderApplication(): ReactElement {
+  return (
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
+}
+
+export function mountApplication(): void {
+  createRoot(readRootElement()).render(renderApplication());
+}
+
+mountApplication();
