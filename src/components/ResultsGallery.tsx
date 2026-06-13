@@ -44,7 +44,7 @@ const listClass = css({
   listStyle: "none",
   m: "0",
   p: "0",
-  "@media (min-aspect-ratio: 1 / 2)": {
+  "@media (orientation: landscape)": {
     columnCount: 2,
     columnGap: "4",
     columnRuleColor: "gray.7",
@@ -58,7 +58,7 @@ const itemClass = css({
   breakInside: "avoid",
   m: "0",
   p: "0",
-  "@media (min-aspect-ratio: 1 / 2)": {
+  "@media (orientation: landscape)": {
     mb: "3",
   },
   "& + &": {
