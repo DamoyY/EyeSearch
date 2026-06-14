@@ -3,7 +3,14 @@ import { logger } from "../lib/logger";
 import type { ExaSearchResult } from "./schema";
 
 function normalizeSummary(summary: string): string {
-  return summary.replaceAll("\n[...]\n", " | ");
+  return summary
+    .replaceAll("\r\n", "\n")
+    .replaceAll("\r", "\n")
+    .replaceAll("\n[...]\n", " | ")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
+    .join("\n");
 }
 
 export function buildSummary(
@@ -23,7 +30,7 @@ export function buildSummary(
       });
     }
 
-    return normalizeSummary(highlights.join("\n\n"));
+    return normalizeSummary(highlights.join("\n"));
   }
 
   logger.warn("Exa", "logs.exaMissingHighlights", {

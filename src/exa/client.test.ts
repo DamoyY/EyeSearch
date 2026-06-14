@@ -39,7 +39,7 @@ describe("searchExa", () => {
             {
               title: "Alpha",
               url: "https://example.com/a",
-              highlights: ["  first line  "],
+              highlights: ["  first line\n\nsecond line  ", " \nthird line\n "],
             },
           ],
         }),
@@ -65,7 +65,11 @@ describe("searchExa", () => {
       type: "auto",
     });
     expect(output.results).toEqual([
-      { summary: "first line", title: "Alpha", url: "https://example.com/a" },
+      {
+        summary: "first line\nsecond line\nthird line",
+        title: "Alpha",
+        url: "https://example.com/a",
+      },
     ]);
   });
 
