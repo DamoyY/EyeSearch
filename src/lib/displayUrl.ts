@@ -22,3 +22,9 @@ export function formatDisplayUrl(url: string): string {
 export function createResultKey(url: string): string {
   return formatDisplayUrl(url).toLocaleLowerCase("en-US");
 }
+
+const FAVICON_ENDPOINT = "https://www.google.com/s2/favicons";
+
+export function faviconUrl(url: string): string {
+  return `${FAVICON_ENDPOINT}?sz=64&domain=${new URL(url).hostname}`;
+}

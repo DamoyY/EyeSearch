@@ -15,7 +15,7 @@ export const exaSearchResponseSchema = z.object({
 export type ExaSearchResult = z.infer<typeof exaSearchResultSchema>;
 
 export interface ExaSearchViewResult {
-  summary: string;
+  summary: string[];
   title: string | null;
   url: string;
 }

@@ -5,17 +5,17 @@ import { dedupeResults } from "./results";
 
 const results: ExaSearchViewResult[] = [
   {
-    summary: "alpha",
+    summary: ["alpha"],
     title: "Alpha",
     url: "https://www.example.com/report.html",
   },
   {
-    summary: "beta",
+    summary: ["beta"],
     title: "Beta",
     url: "https://example.com/report",
   },
   {
-    summary: "gamma",
+    summary: ["gamma"],
     title: "Gamma",
     url: "https://example.org/report",
   },

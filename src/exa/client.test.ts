@@ -66,7 +66,7 @@ describe("searchExa", () => {
     });
     expect(output.results).toEqual([
       {
-        summary: "first line\nsecond line\nthird line",
+        summary: ["first line", "second line", "third line"],
         title: "Alpha",
         url: "https://example.com/a",
       },
