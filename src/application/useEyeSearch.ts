@@ -15,10 +15,13 @@ import {
 export interface EyeSearchController {
   apiKey: string;
   handleApiKeyChange: (nextApiKey: string) => void;
+  hasQueryText: boolean;
+  hasUnsavedApiKey: boolean;
   isSearching: boolean;
   query: string;
   results: ExaSearchViewResult[];
   runSearch: () => Promise<void>;
+  saveApiKey: () => void;
   searchState: SearchState;
   setQuery: (nextQuery: string) => void;
   shouldShowStatus: boolean;
@@ -56,6 +59,7 @@ function createSuccessState(
 
 export function useEyeSearch(): EyeSearchController {
   const [apiKey, setApiKey] = useState(readStoredApiKey);
+  const [savedApiKey, setSavedApiKey] = useState(apiKey);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ExaSearchViewResult[]>([]);
   const [searchState, setSearchState] =
@@ -64,9 +68,12 @@ export function useEyeSearch(): EyeSearchController {
 
   function handleApiKeyChange(nextApiKey: string): void {
     setApiKey(nextApiKey);
+  }
 
+  function saveApiKey(): void {
     try {
-      persistStoredApiKey(nextApiKey);
+      persistStoredApiKey(apiKey);
+      setSavedApiKey(apiKey);
     } catch (error: unknown) {
       setSearchState(
         createErrorState(requestCounterRef.current, "status.persistFailed"),
@@ -156,10 +163,13 @@ export function useEyeSearch(): EyeSearchController {
   return {
     apiKey,
     handleApiKeyChange,
+    hasQueryText: query.trim().length > 0,
+    hasUnsavedApiKey: apiKey !== savedApiKey,
     isSearching: searchState.tone === "loading",
     query,
     results,
     runSearch,
+    saveApiKey,
     searchState,
     setQuery,
     shouldShowStatus:

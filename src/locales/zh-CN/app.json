@@ -19,9 +19,11 @@
     "apiKeyLabel": "API Key",
     "apiKeyPlaceholder": "API Key",
     "apiKeyHelper": "密钥只保存在当前浏览器的 localStorage。",
+    "saveApiKey": "保存",
     "queryLabel": "搜索词",
     "queryPlaceholder": "搜索",
     "queryHelper": "按 Enter 或点击按钮启动搜索。",
+    "search": "搜索",
     "submit": "开始搜索",
     "submitLoading": "搜索中",
     "privacy": "本地保存密钥；请求直接发送到 Exa。"
